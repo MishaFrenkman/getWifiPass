@@ -34,7 +34,7 @@ void output (string pass, string wifi){
 
 int main(int argc, char *argv[]) {
 	string wifi = getSSID(exec("airport -I | grep -w SSID: "));
-	string cmd = "security find-generic-password -gwa " + wifi;
+	string cmd = "security find-generic-password -wa " + wifi;
 	
 	output(exec(cmd.c_str()), wifi);
 }
