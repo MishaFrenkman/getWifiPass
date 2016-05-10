@@ -31,7 +31,7 @@ void output (string pass, string wifi){
 		cout << "No WiFi connection found!" << endl;
 	} else 
 	if (pass.empty()){
-		cout << "Permission denied: Please fill in your user pass!" << endl;
+		cout << "*** Permission denied! ***\nPlease fill in your user pass!" << endl;
 	} else {
 		cout << "WiFi SSID: " +wifi << "Password: " +pass;
 	}
@@ -40,8 +40,22 @@ void output (string pass, string wifi){
 
 
 int main(int argc, char *argv[]) {
-	string wifi = getSSID(exec("airport -I | grep -w SSID: "));
-	string cmd = "security find-generic-password -wa " + wifi;
+	#ifdef __APPLE__
+		string wifi = getSSID(exec("airport -I | grep -w SSID: "));
+		string cmd = "security find-generic-password -wa " + wifi;
+		
+		output(exec(cmd.c_str()), wifi);
+	#endif
 	
-	output(exec(cmd.c_str()), wifi);
+	#ifdef _WIN32
+		cout << endl;
+		cout << "This script currently works for MacOS only :(" << endl;
+		cout << "Windows Version coming soon..." << endl;
+		cout << endl;
+		
+		/*
+			Windows code
+		*/
+	#endif
+	
 }
