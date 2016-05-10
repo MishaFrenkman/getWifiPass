@@ -27,7 +27,14 @@ string getSSID (string str){
 void output (string pass, string wifi){
 	system("clear");
 	cout << "-------------" << endl;
-	cout << "WiFi SSID: " +wifi << "Password: " +pass;
+	if (wifi.empty()) {
+		cout << "No WiFi connection found!" << endl;
+	} else 
+	if (pass.empty()){
+		cout << "Permission denied! Please fill in your user pass!" << endl;
+	} else {
+		cout << "WiFi SSID: " +wifi << "Password: " +pass;
+	}
 	cout << "-------------" << endl;
 }
 
