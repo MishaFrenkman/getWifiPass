@@ -31,7 +31,7 @@ void output (string pass, string wifi){
 		cout << "No WiFi connection found!" << endl;
 	} else 
 	if (pass.empty()){
-		cout << "*** Permission denied! ***\nPlease fill in your user pass!" << endl;
+		cout << "WiFi SSID: " +wifi << "***No password found in keychain!***" << endl;
 	} else {
 		cout << "WiFi SSID: " +wifi << "Password: " +pass;
 	}
