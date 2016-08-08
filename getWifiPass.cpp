@@ -6,7 +6,7 @@
 
 using namespace std;
 
-string exec(const char* cmd) {
+string exec (const char* cmd) {
 	char buffer[128];
 	std::string result = "";
 	std::shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
@@ -31,7 +31,7 @@ void output (string pass, string wifi){
 		cout << "No WiFi connection found!" << endl;
 	} else 
 	if (pass.empty()){
-		cout << "WiFi SSID: " +wifi << "***No password found in keychain!***" << endl;
+		cout << "WiFi SSID: " +wifi << "*** No password found in keychain! ***" << endl;
 	} else {
 		cout << "WiFi SSID: " +wifi << "Password: " +pass;
 	}
@@ -42,8 +42,7 @@ void output (string pass, string wifi){
 int main(int argc, char *argv[]) {
 	#ifdef __APPLE__
 		string wifi = getSSID(exec("airport -I | grep -w SSID: "));
-		string cmd = "security find-generic-password -wa " + wifi;
-		
+		string cmd = "security find-generic-password -wa '" + wifi + "'";
 		output(exec(cmd.c_str()), wifi);
 	#endif
 	
