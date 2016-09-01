@@ -24,18 +24,26 @@ string getSSID (string str){
 	return str;
 }
 
-void output (string pass, string wifi){
+string output (string pass, string wifi){
 	system("clear");
+	
+	string out = "-------------\n";
 	cout << "-------------" << endl;
 	if (wifi.empty()) {
 		cout << "No WiFi connection found!" << endl;
+		out += "No WiFi connection found!\n";
 	} else 
 	if (pass.empty()){
 		cout << "WiFi SSID: " +wifi << "*** No password found in keychain! ***" << endl;
+		out += "WiFi SSID: " +wifi + "\n*** No password found in keychain! ***\n";
 	} else {
 		cout << "WiFi SSID: " +wifi << "Password: " +pass;
+		out += "WiFi SSID: " +wifi+ "\nPassword: " +pass;
 	}
+	out += "-------------\n";
 	cout << "-------------" << endl;
+	
+	return out;
 }
 
 
