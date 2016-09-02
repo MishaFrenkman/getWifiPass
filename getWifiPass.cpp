@@ -24,26 +24,17 @@ string getSSID (string str){
 	return str;
 }
 
-string output (string pass, string wifi){
+void output (string pass, string wifi){
 	system("clear");
 	
-	string out = "-------------\n";
-	cout << "-------------" << endl;
 	if (wifi.empty()) {
 		cout << "No WiFi connection found!" << endl;
-		out += "No WiFi connection found!\n";
 	} else 
 	if (pass.empty()){
 		cout << "WiFi SSID: " +wifi << "*** No password found in keychain! ***" << endl;
-		out += "WiFi SSID: " +wifi + "*** No password found in keychain! ***\n";
 	} else {
 		cout << "WiFi SSID: " +wifi << "Password: " +pass;
-		out += "WiFi SSID: " +wifi+ "\nPassword: " +pass;
-	}
-	out += "-------------\n";
-	cout << "-------------" << endl;
-	
-	return out;
+	}	
 }
 
 
@@ -52,8 +43,7 @@ int main(int argc, char *argv[]) {
 		string wifi = getSSID(exec("/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | grep -w SSID: "));
 		
 		string cmd = "security find-generic-password -wa " + wifi + "";
-		string out = output(exec(cmd.c_str()), wifi);
-//		cout << out;
+		output(exec(cmd.c_str()), wifi);
 	#endif
 	
 	#ifdef _WIN32
