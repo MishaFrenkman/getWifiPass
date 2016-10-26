@@ -3,6 +3,6 @@
 
 How-to:
 
-1. Download the exec file
-2. Copy file to /usr/bin
+1. Download the exec or compile the c++ file
+2. Copy executable to $PATH
 3. Run in terminal
